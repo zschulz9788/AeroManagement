@@ -21,13 +21,11 @@ header{border-bottom:1px solid rgba(201,168,76,.2);padding:18px 0;margin-bottom:
 .dt{font-family:'DM Mono',monospace;font-size:11px;color:var(--mu);}
 .sec{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
 .sec::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(201,168,76,.3),transparent);}
-/* STATS */
 .sr{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:44px;}
 .sc{background:var(--m);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px 20px;}
 .sl{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px;}
 .sv{font-family:'Playfair Display',serif;font-size:22px;color:#fff;}
 .ss{font-size:10px;color:var(--mu);margin-top:4px;font-family:'DM Mono',monospace;}
-/* CARDS */
 .cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(278px,1fr));gap:16px;margin-bottom:44px;}
 .cc{background:var(--m);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px;position:relative;overflow:hidden;transition:transform .2s;}
 .cc:hover{transform:translateY(-2px);}
@@ -55,7 +53,6 @@ header{border-bottom:1px solid rgba(201,168,76,.2);padding:18px 0;margin-bottom:
 .pr{background:linear-gradient(to right,var(--re),var(--am));}
 .pp{font-family:'DM Mono',monospace;font-size:10px;color:var(--mu);margin-top:4px;text-align:right;}
 .cn{margin-top:8px;font-size:10px;color:var(--mu);font-style:italic;line-height:1.4;}
-/* CHARTS */
 .chg{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:44px;}
 @media(max-width:900px){.chg{grid-template-columns:1fr;}}
 .chc{background:var(--m);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px;}
@@ -87,26 +84,33 @@ header{border-bottom:1px solid rgba(201,168,76,.2);padding:18px 0;margin-bottom:
 .acity{color:var(--mu);font-size:10px;}
 /* RESULTS */
 .ra{margin-top:24px;}
-.rh{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap;}
-.rl{font-family:'DM Mono',monospace;font-size:13px;color:var(--sl);}
-.dl{font-family:'DM Mono',monospace;font-size:11px;color:var(--mu);margin-left:auto;}
-.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px;}
-.rc{border-radius:12px;padding:18px;border:1px solid;position:relative;overflow:hidden;}
-.rc.best{background:linear-gradient(135deg,rgba(46,204,113,.1),rgba(79,163,209,.07));border-color:rgba(46,204,113,.4);}
-.rc.good{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08);}
-.rc.poor{background:rgba(0,0,0,.08);border-color:rgba(255,255,255,.04);opacity:.6;}
-.rr{position:absolute;top:12px;right:12px;font-family:'DM Mono',monospace;font-size:10px;color:var(--mu);}
-.rc.best .rr{color:var(--gr);}
-.rn{font-family:'Playfair Display',serif;font-size:15px;color:#fff;margin-bottom:12px;padding-right:50px;line-height:1.3;}
-.rs{display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px;}
-.rsl{color:var(--mu);}
-.rsv{font-family:'DM Mono',monospace;color:var(--cr);}
-.rsv.rh2{color:var(--gl);font-weight:600;}
-.rsv.ok{color:var(--gr);}
-.rsv.wn{color:var(--am);}
-.rsv.no{color:var(--re);}
-.bc{display:inline-flex;align-items:center;gap:4px;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);color:var(--gr);font-size:9px;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:9px;}
-.nr{text-align:center;padding:36px;color:var(--mu);font-size:13px;}
+.rhdr{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap;}
+.rlbl{font-family:'DM Mono',monospace;font-size:13px;color:var(--sl);}
+.dlbl{font-family:'DM Mono',monospace;font-size:11px;color:var(--mu);margin-left:auto;}
+/* contract section */
+.csec{margin-bottom:28px;}
+.csec-title{font-family:'Playfair Display',serif;font-size:16px;color:#fff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.csec-bal{font-family:'DM Mono',monospace;font-size:11px;margin-left:auto;white-space:nowrap;}
+.csec-bal.ok{color:var(--gr);}
+.csec-bal.no{color:var(--re);}
+.csec-bal.warn{color:var(--am);}
+/* aircraft cards */
+.ac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;}
+.acard{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:15px;position:relative;transition:border-color .2s;}
+.acard:hover{border-color:rgba(201,168,76,.25);}
+.acard.best{background:linear-gradient(135deg,rgba(46,204,113,.1),rgba(79,163,209,.06));border-color:rgba(46,204,113,.4);}
+.best-tag{position:absolute;top:8px;right:8px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--gr);background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);padding:2px 7px;border-radius:10px;text-transform:uppercase;}
+.acard-name{font-size:13px;font-family:'Playfair Display',serif;color:#fff;margin-bottom:10px;padding-right:60px;}
+.arow{display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px;}
+.albl{color:var(--mu);}
+.aval{font-family:'DM Mono',monospace;color:var(--cr);}
+.aval.g{color:var(--gr);}
+.aval.w{color:var(--am);}
+.aval.r{color:var(--re);}
+.aval.gold{color:var(--gl);font-weight:600;}
+.acard.insuf{opacity:.4;}
+.unavail{background:rgba(0,0,0,.12);border:1px solid rgba(255,255,255,.05);border-radius:11px;padding:14px 16px;font-size:11px;color:var(--mu);font-family:'DM Mono',monospace;grid-column:1/-1;}
+.no-res{text-align:center;padding:36px;color:var(--mu);font-size:13px;}
 ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--v);}::-webkit-scrollbar-thumb{background:var(--l);border-radius:3px;}
 footer{border-top:1px solid rgba(255,255,255,.06);padding:18px 0;text-align:center;font-size:10px;color:var(--mu);font-family:'DM Mono',monospace;letter-spacing:.1em;}
 </style>
@@ -128,20 +132,23 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:18px 0;text-align:cent
 <div class="chg">
   <div class="chc"><h3>Remaining Balance by Contract</h3><p>Current hours remaining across active hour-based contracts</p><div class="chw"><canvas id="c1"></canvas></div></div>
   <div class="chc"><h3>Spending by Contract</h3><p>Total dollars spent per dollar-based contract (all time)</p><div class="chw"><canvas id="c2"></canvas></div></div>
-  <div class="chc"><h3>Trips by Destination Region</h3><p>Flights by destination state/country &mdash; 292 total trips logged</p><div class="chw"><canvas id="c3"></canvas></div></div>
-  <div class="chc"><h3>Aircraft Type Breakdown</h3><p>Flights flown by aircraft type across all NetJets contracts</p><div class="chw"><canvas id="c4"></canvas></div></div>
+  <div class="chc"><h3>Trips by Destination Region</h3><p>292 total trips logged across all contracts</p><div class="chw"><canvas id="c3"></canvas></div></div>
+  <div class="chc"><h3>Aircraft Type Breakdown</h3><p>Flights by aircraft type across all NetJets contracts</p><div class="chw"><canvas id="c4"></canvas></div></div>
 </div>
 
 <div class="sec">Contract Flight Advisor</div>
 <div class="adv">
   <div class="ah">
     <div class="ai">&#128747;</div>
-    <div><div class="at">Find the Best Contract for Your Trip</div><div class="as">Enter origin &amp; destination &mdash; ranked by available balance, coverage, and cost efficiency</div></div>
+    <div>
+      <div class="at">Find the Best Contract &amp; Aircraft for Your Trip</div>
+      <div class="as">Shows actual flight time per aircraft speed + contract hours consumed per interchange rate &mdash; side by side</div>
+    </div>
   </div>
   <div class="ir">
     <div class="ig"><label>Origin Airport</label><input type="text" id="oi" placeholder="e.g. PBI, HPN, TEB&hellip;" autocomplete="off"><div class="acl" id="oa"></div></div>
     <div class="ig"><label>Destination Airport</label><input type="text" id="di" placeholder="e.g. MTJ, RBW, CHS&hellip;" autocomplete="off"><div class="acl" id="da"></div></div>
-    <button class="btn" onclick="findBest()">Find Best &#8594;</button>
+    <button class="btn" onclick="findBest()">Analyze Trip &#8594;</button>
   </div>
   <div class="ht">IATA/FAA codes (PBI, HPN, RBW, MTJ) or city/airport names accepted</div>
   <div class="ra" id="ra" style="display:none;"></div>
@@ -152,99 +159,127 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:18px 0;text-align:cent
 <script>
 const TODAY = new Date('2026-03-03');
 
-// ── REAL DATA FROM SPREADSHEET ────────────────────────────────────────────────
+// ── CONTRACTS (NJ 650 updated to expire 2027-01-03) ───────────────────────────
 const CONTRACTS = [
-  {name:'NetJets 650',    eff:'2023-01-01',exp:'2024-01-03',sH:52.4,uH:51.9,rH:0.5,  sD:0,uD:0,       rD:0,       notes:''},
-  {name:'NetJets 650',    eff:'2024-01-04',exp:'2025-01-03',sH:48.8,uH:44.1,rH:4.7,  sD:0,uD:0,       rD:0,       notes:'Includes 0.7-hr surplus from 2023'},
-  {name:'NetJets 650',    eff:'2025-01-04',exp:'2026-01-03',sH:52.8,uH:46.3,rH:6.5,  sD:0,uD:0,       rD:0,       notes:'Includes 4.7-hr surplus from 2024'},
-  {name:'NetJets Share',  eff:'2022-01-01',exp:'2023-09-14',sH:22.6,uH:33.8,rH:-11.2,sD:0,uD:0,       rD:0,       notes:''},
-  {name:'NetJets Share',  eff:'2023-09-15',exp:'2024-09-14',sH:38.8,uH:50.6,rH:-11.8,sD:0,uD:0,       rD:0,       notes:'Includes 11.2-hr deficit from 2023'},
-  {name:'NetJets Share',  eff:'2024-09-15',exp:'2025-09-14',sH:38.2,uH:43.2,rH:-5.0, sD:0,uD:0,       rD:0,       notes:'Includes 11.8-hr deficit from 2024'},
-  {name:'NetJets Share',  eff:'2025-09-16',exp:'2026-09-15',sH:45.0,uH:26.1,rH:18.9, sD:0,uD:0,       rD:0,       notes:'Includes 5-hr deficit from 2025'},
-  {name:'Wheels Up',      eff:'2024-03-27',exp:'2025-03-26',sH:0,   uH:0,   rH:0,    sD:425000,   uD:416178.58,rD:8821.42,   notes:'Acct #802. Added $175,000 on 6/6/24'},
-  {name:'Wheels Up',      eff:'2025-05-01',exp:'2026-05-01',sH:0,   uH:0,   rH:0,    sD:268821.42,uD:276270.40, rD:-7448.98,  notes:'Acct #803. Includes surplus + $170K per JS'},
-  {name:'XO Jet Reserve', eff:'2024-12-25',exp:'',          sH:0,   uH:0,   rH:0,    sD:101050,   uD:50811.05, rD:50238.95,  notes:'Pay per trip. $1,005 credit applied to balance'},
-  {name:'XO Jet Ride Share',eff:'2024',    exp:'',          sH:0,   uH:0,   rH:0,    sD:0,        uD:87554.75, rD:-87554.75, notes:'Pay per trip'},
-  {name:'Charter',        eff:'2024',      exp:'',          sH:0,   uH:0,   rH:0,    sD:0,        uD:12233.62, rD:-12233.62, notes:''},
-  {name:'Tudor',          eff:'2023',      exp:'',          sH:0,   uH:0,   rH:0,    sD:0,        uD:0,        rD:0,         notes:''},
-  {name:'JetEdge',        eff:'2023',      exp:'',          sH:0,   uH:0,   rH:0,    sD:0,        uD:0,        rD:0,         notes:'Not renewed'},
+  {name:'NetJets 650',     eff:'2023-01-01',exp:'2024-01-03',sH:52.4,uH:51.9,rH:0.5,  sD:0,uD:0,        rD:0,         notes:''},
+  {name:'NetJets 650',     eff:'2024-01-04',exp:'2025-01-03',sH:48.8,uH:44.1,rH:4.7,  sD:0,uD:0,        rD:0,         notes:'Includes 0.7-hr surplus from 2023'},
+  {name:'NetJets 650',     eff:'2025-01-04',exp:'2027-01-03',sH:52.8,uH:46.3,rH:6.5,  sD:0,uD:0,        rD:0,         notes:'Includes 4.7-hr surplus from 2024'},
+  {name:'NetJets Share',   eff:'2022-01-01',exp:'2023-09-14',sH:22.6,uH:33.8,rH:-11.2,sD:0,uD:0,        rD:0,         notes:''},
+  {name:'NetJets Share',   eff:'2023-09-15',exp:'2024-09-14',sH:38.8,uH:50.6,rH:-11.8,sD:0,uD:0,        rD:0,         notes:'Includes 11.2-hr deficit from 2023'},
+  {name:'NetJets Share',   eff:'2024-09-15',exp:'2025-09-14',sH:38.2,uH:43.2,rH:-5.0, sD:0,uD:0,        rD:0,         notes:'Includes 11.8-hr deficit from 2024'},
+  {name:'NetJets Share',   eff:'2025-09-16',exp:'2026-09-15',sH:45.0,uH:26.1,rH:18.9, sD:0,uD:0,        rD:0,         notes:'Includes 5-hr deficit from 2025'},
+  {name:'Wheels Up',       eff:'2024-03-27',exp:'2025-03-26',sH:0,   uH:0,   rH:0,    sD:425000,  uD:416178.58, rD:8821.42,   notes:'Acct #802. Added $175,000 on 6/6/24'},
+  {name:'Wheels Up',       eff:'2025-05-01',exp:'2026-05-01',sH:0,   uH:0,   rH:0,    sD:268821.42,uD:276270.40,rD:-7448.98,  notes:'Acct #803. Includes surplus + $170K per JS'},
+  {name:'XO Jet Reserve',  eff:'2024-12-25',exp:'',          sH:0,   uH:0,   rH:0,    sD:101050,  uD:50811.05,  rD:50238.95,  notes:'Pay per trip. $1,005 credit applied to balance'},
+  {name:'XO Jet Ride Share',eff:'2024',     exp:'',          sH:0,   uH:0,   rH:0,    sD:0,       uD:87554.75,  rD:-87554.75, notes:'Pay per trip'},
+  {name:'Charter',         eff:'2024',      exp:'',          sH:0,   uH:0,   rH:0,    sD:0,       uD:12233.62,  rD:-12233.62, notes:''},
+  {name:'Tudor',           eff:'2023',      exp:'',          sH:0,   uH:0,   rH:0,    sD:0,       uD:0,         rD:0,         notes:''},
+  {name:'JetEdge',         eff:'2023',      exp:'',          sH:0,   uH:0,   rH:0,    sD:0,       uD:0,         rD:0,         notes:'Not renewed'},
 ];
 
-// Chart data extracted from travel-calendar (292 total trips)
-const TBC = {NJ650:131, NJShare:91, WU:25, XORide:22, Tudor:10, Charter:7, XORes:5, JetEdge:1};
+// ── AIRCRAFT: cruise speed (ktas) + interchange rates per contract ─────────────
+// Speeds: real-world typical cruise (ktas)
+const AIRCRAFT = [
+  {
+    name: 'Latitude',
+    speed: 440,   // Cessna Citation Latitude ~440 ktas
+    rates: { 'NetJets 650': 0.84, 'NetJets Share': 1.00 }
+  },
+  {
+    name: 'Phenom 300',
+    speed: 390,   // Embraer Phenom 300 ~390 ktas
+    rates: { 'NetJets 650': 0.57, 'NetJets Share': 0.80 }
+  },
+  {
+    name: 'Citation Excel',
+    speed: 395,   // Citation XLS ~395 ktas
+    rates: { 'NetJets 650': 0.69, 'NetJets Share': 0.94 }
+  },
+  {
+    name: 'Sovereign',
+    speed: 420,   // Citation Sovereign ~420 ktas
+    rates: { 'NetJets 650': 0.82, 'NetJets Share': 1.00 }
+  },
+];
+
+// ── PIE CHART DATA (from spreadsheet) ────────────────────────────────────────
 const SPEND = {'Wheels Up':692448.98,'XO Jet Ride Share':87554.75,'XO Jet Reserve':50811.05,'Charter':12233.62};
 const DEST  = {Florida:86,'S. Carolina':56,'New York':47,Colorado:38,Arkansas:7,France:7,Tennessee:5,Georgia:5,Wyoming:5,Wisconsin:4,Ohio:3,Massachusetts:2};
 const ACT   = {Latitude:73,'Phenom 300':68,'Citation Excel':52,Sovereign:22,C350:4,Longitude:1,'Falcon 2000':1,C650:1};
 
-// ── AIRPORTS ─────────────────────────────────────────────────────────────────
+// ── AIRPORTS ──────────────────────────────────────────────────────────────────
 const AP = [
-  {f:'PBI',i:'PBI',n:'Palm Beach International',c:'West Palm Beach, FL',la:26.683,lo:-80.096},
-  {f:'HPN',i:'HPN',n:'Westchester County Airport',c:'White Plains, NY',la:41.067,lo:-73.708},
-  {f:'RBW',i:'RBW',n:'Lowcountry Regional Airport',c:'Walterboro, SC',la:32.920,lo:-80.641},
-  {f:'MTJ',i:'MTJ',n:'Montrose Regional Airport',c:'Montrose, CO',la:38.509,lo:-107.894},
-  {f:'JZI',i:'JZI',n:'Charleston Executive Airport',c:'Charleston, SC',la:32.700,lo:-80.003},
-  {f:'CHS',i:'CHS',n:'Charleston International',c:'Charleston, SC',la:32.899,lo:-80.041},
-  {f:'SRQ',i:'SRQ',n:'Sarasota Bradenton International',c:'Sarasota, FL',la:27.396,lo:-82.554},
-  {f:'TEX',i:'TEX',n:'Telluride Regional Airport',c:'Telluride, CO',la:37.954,lo:-107.908},
-  {f:'APA',i:'APA',n:'Centennial Airport',c:'Denver, CO',la:39.570,lo:-104.849},
-  {f:'BJC',i:'BJC',n:'Rocky Mountain Metropolitan',c:'Broomfield, CO',la:39.909,lo:-105.117},
-  {f:'EGE',i:'EGE',n:'Eagle County Regional',c:'Eagle/Vail, CO',la:39.643,lo:-106.918},
-  {f:'SUA',i:'SUA',n:'Witham Field Airport',c:'Stuart, FL',la:27.182,lo:-80.221},
-  {f:'SSI',i:'SSI',n:'McKinnon St. Simons Island',c:'Brunswick, GA',la:31.152,lo:-81.391},
-  {f:'DAY',i:'DAY',n:'Dayton International Airport',c:'Dayton, OH',la:39.902,lo:-84.219},
-  {f:'BNA',i:'BNA',n:'Nashville International',c:'Nashville, TN',la:36.124,lo:-86.678},
-  {f:'LIT',i:'LIT',n:'Bill & Hillary Clinton National',c:'Little Rock, AR',la:34.729,lo:-92.224},
-  {f:'BED',i:'BED',n:'Hanscom Field',c:'Bedford, MA',la:42.470,lo:-71.289},
-  {f:'FXE',i:'FXE',n:'Fort Lauderdale Executive',c:'Fort Lauderdale, FL',la:26.197,lo:-80.171},
-  {f:'BCT',i:'BCT',n:'Boca Raton Airport',c:'Boca Raton, FL',la:26.379,lo:-80.108},
-  {f:'TEB',i:'TEB',n:'Teterboro Airport',c:'Teterboro, NJ',la:40.850,lo:-74.061},
-  {f:'JFK',i:'JFK',n:'JFK International',c:'New York, NY',la:40.641,lo:-73.778},
-  {f:'LGA',i:'LGA',n:'LaGuardia Airport',c:'New York, NY',la:40.777,lo:-73.873},
-  {f:'EWR',i:'EWR',n:'Newark Liberty International',c:'Newark, NJ',la:40.693,lo:-74.169},
-  {f:'BOS',i:'BOS',n:'Logan International',c:'Boston, MA',la:42.364,lo:-71.005},
-  {f:'MIA',i:'MIA',n:'Miami International',c:'Miami, FL',la:25.796,lo:-80.287},
-  {f:'FLL',i:'FLL',n:'Fort Lauderdale-Hollywood',c:'Fort Lauderdale, FL',la:26.073,lo:-80.150},
-  {f:'TPA',i:'TPA',n:'Tampa International',c:'Tampa, FL',la:27.975,lo:-82.533},
-  {f:'MCO',i:'MCO',n:'Orlando International',c:'Orlando, FL',la:28.429,lo:-81.309},
-  {f:'RSW',i:'RSW',n:'Southwest Florida International',c:'Fort Myers, FL',la:26.536,lo:-81.755},
-  {f:'JAX',i:'JAX',n:'Jacksonville International',c:'Jacksonville, FL',la:30.494,lo:-81.688},
-  {f:'ATL',i:'ATL',n:'Hartsfield-Jackson Atlanta',c:'Atlanta, GA',la:33.641,lo:-84.427},
-  {f:'SAV',i:'SAV',n:'Savannah/Hilton Head International',c:'Savannah, GA',la:32.127,lo:-81.202},
-  {f:'CLT',i:'CLT',n:'Charlotte Douglas International',c:'Charlotte, NC',la:35.214,lo:-80.943},
-  {f:'RDU',i:'RDU',n:'Raleigh-Durham International',c:'Raleigh, NC',la:35.878,lo:-78.787},
-  {f:'DCA',i:'DCA',n:'Reagan National Airport',c:'Washington, DC',la:38.852,lo:-77.038},
-  {f:'IAD',i:'IAD',n:'Dulles International',c:'Washington, DC',la:38.945,lo:-77.456},
-  {f:'PHL',i:'PHL',n:'Philadelphia International',c:'Philadelphia, PA',la:39.872,lo:-75.241},
-  {f:'ORD',i:'ORD',n:"O'Hare International",c:'Chicago, IL',la:41.978,lo:-87.905},
-  {f:'PWK',i:'PWK',n:'Chicago Executive Airport',c:'Wheeling, IL',la:42.114,lo:-87.901},
-  {f:'MSP',i:'MSP',n:'Minneapolis-Saint Paul International',c:'Minneapolis, MN',la:44.882,lo:-93.222},
-  {f:'IAH',i:'IAH',n:'George Bush Intercontinental',c:'Houston, TX',la:29.984,lo:-95.342},
-  {f:'DFW',i:'DFW',n:'Dallas/Fort Worth International',c:'Dallas, TX',la:32.897,lo:-97.038},
-  {f:'PHX',i:'PHX',n:'Phoenix Sky Harbor',c:'Phoenix, AZ',la:33.438,lo:-112.008},
-  {f:'LAS',i:'LAS',n:'Harry Reid International',c:'Las Vegas, NV',la:36.080,lo:-115.152},
-  {f:'SLC',i:'SLC',n:'Salt Lake City International',c:'Salt Lake City, UT',la:40.789,lo:-111.978},
-  {f:'DEN',i:'DEN',n:'Denver International',c:'Denver, CO',la:39.856,lo:-104.674},
-  {f:'LAX',i:'LAX',n:'Los Angeles International',c:'Los Angeles, CA',la:33.943,lo:-118.408},
-  {f:'SFO',i:'SFO',n:'San Francisco International',c:'San Francisco, CA',la:37.619,lo:-122.375},
-  {f:'SAN',i:'SAN',n:'San Diego International',c:'San Diego, CA',la:32.734,lo:-117.190},
-  {f:'SEA',i:'SEA',n:'Seattle-Tacoma International',c:'Seattle, WA',la:47.450,lo:-122.309},
-  {f:'PDX',i:'PDX',n:'Portland International',c:'Portland, OR',la:45.589,lo:-122.598},
-  {f:'PWM',i:'PWM',n:'Portland International Jetport',c:'Portland, ME',la:43.647,lo:-70.309},
-  {f:'EGLF',i:'FAB',n:'Farnborough Airport',c:'Farnborough, UK',la:51.278,lo:-0.776},
-  {f:'LFTH',i:'TLN',n:'Toulon-Hyeres Airport',c:'Toulon, France',la:43.097,lo:6.146},
-  {f:'LSGG',i:'GVA',n:'Geneva Airport',c:'Geneva, Switzerland',la:46.238,lo:6.109},
-  {f:'LEMG',i:'AGP',n:'Malaga Airport',c:'Malaga, Spain',la:36.675,lo:-4.499},
-  {f:'LEZL',i:'SVQ',n:'Seville Airport',c:'Seville, Spain',la:37.418,lo:-5.893},
-  {f:'LFPB',i:'LBG',n:'Paris Le Bourget',c:'Paris, France',la:48.969,lo:2.441},
-  {f:'EGLL',i:'LHR',n:'London Heathrow',c:'London, UK',la:51.477,lo:-0.461},
-  {f:'EHAM',i:'AMS',n:'Amsterdam Schiphol',c:'Amsterdam, Netherlands',la:52.310,lo:4.768},
-  {f:'CYKA',i:'YKA',n:'Kamloops Airport',c:'Kamloops, BC',la:50.702,lo:-120.444},
+  {f:'PBI',i:'PBI',n:'Palm Beach International',     c:'West Palm Beach, FL',la:26.683,lo:-80.096},
+  {f:'HPN',i:'HPN',n:'Westchester County Airport',   c:'White Plains, NY',   la:41.067,lo:-73.708},
+  {f:'RBW',i:'RBW',n:'Lowcountry Regional Airport',  c:'Walterboro, SC',     la:32.920,lo:-80.641},
+  {f:'MTJ',i:'MTJ',n:'Montrose Regional Airport',    c:'Montrose, CO',       la:38.509,lo:-107.894},
+  {f:'JZI',i:'JZI',n:'Charleston Executive Airport', c:'Charleston, SC',     la:32.700,lo:-80.003},
+  {f:'CHS',i:'CHS',n:'Charleston International',     c:'Charleston, SC',     la:32.899,lo:-80.041},
+  {f:'SRQ',i:'SRQ',n:'Sarasota Bradenton Intl',      c:'Sarasota, FL',       la:27.396,lo:-82.554},
+  {f:'TEX',i:'TEX',n:'Telluride Regional Airport',   c:'Telluride, CO',      la:37.954,lo:-107.908},
+  {f:'APA',i:'APA',n:'Centennial Airport',           c:'Denver, CO',         la:39.570,lo:-104.849},
+  {f:'BJC',i:'BJC',n:'Rocky Mountain Metropolitan',  c:'Broomfield, CO',     la:39.909,lo:-105.117},
+  {f:'EGE',i:'EGE',n:'Eagle County Regional',        c:'Eagle/Vail, CO',     la:39.643,lo:-106.918},
+  {f:'SUA',i:'SUA',n:'Witham Field Airport',         c:'Stuart, FL',         la:27.182,lo:-80.221},
+  {f:'SSI',i:'SSI',n:'McKinnon St. Simons Island',   c:'Brunswick, GA',      la:31.152,lo:-81.391},
+  {f:'DAY',i:'DAY',n:'Dayton International',         c:'Dayton, OH',         la:39.902,lo:-84.219},
+  {f:'BNA',i:'BNA',n:'Nashville International',      c:'Nashville, TN',      la:36.124,lo:-86.678},
+  {f:'LIT',i:'LIT',n:'Bill & Hillary Clinton Natl',  c:'Little Rock, AR',    la:34.729,lo:-92.224},
+  {f:'BED',i:'BED',n:'Hanscom Field',                c:'Bedford, MA',        la:42.470,lo:-71.289},
+  {f:'FXE',i:'FXE',n:'Fort Lauderdale Executive',    c:'Fort Lauderdale, FL',la:26.197,lo:-80.171},
+  {f:'BCT',i:'BCT',n:'Boca Raton Airport',           c:'Boca Raton, FL',     la:26.379,lo:-80.108},
+  {f:'TEB',i:'TEB',n:'Teterboro Airport',            c:'Teterboro, NJ',      la:40.850,lo:-74.061},
+  {f:'JFK',i:'JFK',n:'JFK International',            c:'New York, NY',       la:40.641,lo:-73.778},
+  {f:'LGA',i:'LGA',n:'LaGuardia Airport',            c:'New York, NY',       la:40.777,lo:-73.873},
+  {f:'EWR',i:'EWR',n:'Newark Liberty International', c:'Newark, NJ',         la:40.693,lo:-74.169},
+  {f:'BOS',i:'BOS',n:'Logan International',          c:'Boston, MA',         la:42.364,lo:-71.005},
+  {f:'MIA',i:'MIA',n:'Miami International',          c:'Miami, FL',          la:25.796,lo:-80.287},
+  {f:'FLL',i:'FLL',n:'Fort Lauderdale-Hollywood',    c:'Fort Lauderdale, FL',la:26.073,lo:-80.150},
+  {f:'TPA',i:'TPA',n:'Tampa International',          c:'Tampa, FL',          la:27.975,lo:-82.533},
+  {f:'MCO',i:'MCO',n:'Orlando International',        c:'Orlando, FL',        la:28.429,lo:-81.309},
+  {f:'RSW',i:'RSW',n:'Southwest Florida Intl',       c:'Fort Myers, FL',     la:26.536,lo:-81.755},
+  {f:'JAX',i:'JAX',n:'Jacksonville International',   c:'Jacksonville, FL',   la:30.494,lo:-81.688},
+  {f:'ATL',i:'ATL',n:'Hartsfield-Jackson Atlanta',   c:'Atlanta, GA',        la:33.641,lo:-84.427},
+  {f:'SAV',i:'SAV',n:'Savannah/Hilton Head Intl',    c:'Savannah, GA',       la:32.127,lo:-81.202},
+  {f:'CLT',i:'CLT',n:'Charlotte Douglas Intl',       c:'Charlotte, NC',      la:35.214,lo:-80.943},
+  {f:'RDU',i:'RDU',n:'Raleigh-Durham International', c:'Raleigh, NC',        la:35.878,lo:-78.787},
+  {f:'DCA',i:'DCA',n:'Reagan National Airport',      c:'Washington, DC',     la:38.852,lo:-77.038},
+  {f:'IAD',i:'IAD',n:'Dulles International',         c:'Washington, DC',     la:38.945,lo:-77.456},
+  {f:'PHL',i:'PHL',n:'Philadelphia International',   c:'Philadelphia, PA',   la:39.872,lo:-75.241},
+  {f:'ORD',i:'ORD',n:"O'Hare International",         c:'Chicago, IL',        la:41.978,lo:-87.905},
+  {f:'PWK',i:'PWK',n:'Chicago Executive Airport',    c:'Wheeling, IL',       la:42.114,lo:-87.901},
+  {f:'MSP',i:'MSP',n:'Minneapolis-Saint Paul Intl',  c:'Minneapolis, MN',    la:44.882,lo:-93.222},
+  {f:'IAH',i:'IAH',n:'Bush Intercontinental',        c:'Houston, TX',        la:29.984,lo:-95.342},
+  {f:'DFW',i:'DFW',n:'Dallas/Fort Worth Intl',       c:'Dallas, TX',         la:32.897,lo:-97.038},
+  {f:'PHX',i:'PHX',n:'Phoenix Sky Harbor',           c:'Phoenix, AZ',        la:33.438,lo:-112.008},
+  {f:'LAS',i:'LAS',n:'Harry Reid International',     c:'Las Vegas, NV',      la:36.080,lo:-115.152},
+  {f:'SLC',i:'SLC',n:'Salt Lake City Intl',          c:'Salt Lake City, UT', la:40.789,lo:-111.978},
+  {f:'DEN',i:'DEN',n:'Denver International',         c:'Denver, CO',         la:39.856,lo:-104.674},
+  {f:'LAX',i:'LAX',n:'Los Angeles International',    c:'Los Angeles, CA',    la:33.943,lo:-118.408},
+  {f:'SFO',i:'SFO',n:'San Francisco Intl',           c:'San Francisco, CA',  la:37.619,lo:-122.375},
+  {f:'SAN',i:'SAN',n:'San Diego International',      c:'San Diego, CA',      la:32.734,lo:-117.190},
+  {f:'SEA',i:'SEA',n:'Seattle-Tacoma International', c:'Seattle, WA',        la:47.450,lo:-122.309},
+  {f:'PDX',i:'PDX',n:'Portland International',       c:'Portland, OR',       la:45.589,lo:-122.598},
+  {f:'PWM',i:'PWM',n:'Portland International Jetport',c:'Portland, ME',      la:43.647,lo:-70.309},
+  {f:'EGLF',i:'FAB',n:'Farnborough Airport',         c:'Farnborough, UK',    la:51.278,lo:-0.776},
+  {f:'LFTH',i:'TLN',n:'Toulon-Hyeres Airport',       c:'Toulon, France',     la:43.097,lo:6.146},
+  {f:'LSGG',i:'GVA',n:'Geneva Airport',              c:'Geneva, Switzerland',la:46.238,lo:6.109},
+  {f:'LEMG',i:'AGP',n:'Malaga Airport',              c:'Malaga, Spain',      la:36.675,lo:-4.499},
+  {f:'LEZL',i:'SVQ',n:'Seville Airport',             c:'Seville, Spain',     la:37.418,lo:-5.893},
+  {f:'LFPB',i:'LBG',n:'Paris Le Bourget',            c:'Paris, France',      la:48.969,lo:2.441},
+  {f:'EGLL',i:'LHR',n:'London Heathrow',             c:'London, UK',         la:51.477,lo:-0.461},
+  {f:'EHAM',i:'AMS',n:'Amsterdam Schiphol',          c:'Amsterdam, Netherlands',la:52.310,lo:4.768},
+  {f:'CYKA',i:'YKA',n:'Kamloops Airport',            c:'Kamloops, BC',       la:50.702,lo:-120.444},
 ];
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
 function isAct(c) {
-  if(!c.eff||!c.exp||c.eff.length<8||c.exp.length<8) return false;
-  return TODAY >= new Date(c.eff) && TODAY <= new Date(c.exp);
+  if(!c.eff||c.eff.length<8) return false;
+  const started = TODAY >= new Date(c.eff);
+  if(!started) return false;
+  // No expiry = ongoing contract, treat as active
+  if(!c.exp||c.exp.length<8) return true;
+  return TODAY <= new Date(c.exp);
 }
 function wasRecent(c) {
   if(!c.exp||c.exp.length<8) return false;
@@ -253,44 +288,49 @@ function wasRecent(c) {
 }
 function hav(la1,lo1,la2,lo2) {
   const R=3440.065, dL=(la2-la1)*Math.PI/180, dO=(lo2-lo1)*Math.PI/180;
-  const a = Math.sin(dL/2)**2 + Math.cos(la1*Math.PI/180)*Math.cos(la2*Math.PI/180)*Math.sin(dO/2)**2;
+  const a=Math.sin(dL/2)**2+Math.cos(la1*Math.PI/180)*Math.cos(la2*Math.PI/180)*Math.sin(dO/2)**2;
   return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
 }
-function eH(nm) { return Math.round((nm/430+0.3)*10)/10; }
+// flight time in decimal hours given distance NM and cruise speed ktas
+// adds 0.3 hr for taxi/approach
+function flightTime(nm, speedKtas) {
+  return Math.round((nm/speedKtas + 0.3)*100)/100;
+}
 function fH(h) {
   const s=h<0?'-':'', a=Math.abs(h), hr=Math.floor(a), mn=Math.round((a-hr)*60);
   return s+hr+'h '+mn.toString().padStart(2,'0')+'m';
 }
+function fHd(h) { return h.toFixed(2)+' hrs'; }
 function fD(v) { return '$'+Math.abs(v).toLocaleString(undefined,{maximumFractionDigits:0}); }
 function srch(q) {
   if(!q||q.length<2) return [];
-  const u = q.trim().toUpperCase();
-  const exact = AP.filter(a=>a.f===u||a.i===u||('K'+a.f)===u||(a.f+'K')===u);
-  const part  = AP.filter(a=>!exact.includes(a)&&(a.f.includes(u)||a.i.includes(u)||a.n.toUpperCase().includes(u)||a.c.toUpperCase().includes(u)));
+  const u=q.trim().toUpperCase();
+  const exact=AP.filter(a=>a.f===u||a.i===u||('K'+a.f)===u||(a.f+'K')===u);
+  const part=AP.filter(a=>!exact.includes(a)&&(a.f.includes(u)||a.i.includes(u)||a.n.toUpperCase().includes(u)||a.c.toUpperCase().includes(u)));
   return [...exact,...part].slice(0,8);
 }
 
 // ── STATS ─────────────────────────────────────────────────────────────────────
 function renderStats() {
-  const act = CONTRACTS.filter(c=>isAct(c));
-  const totH = act.filter(c=>c.rH>0).reduce((s,c)=>s+c.rH,0);
-  const totD = act.filter(c=>c.rD>0).reduce((s,c)=>s+c.rD,0);
-  const items = [
-    {l:'Total Trips Logged',    v:'292',         s:'all contracts, all time'},
-    {l:'NetJets Hours Flown',   v:'317.8 hrs',   s:'NJ 650 + Share combined'},
-    {l:'Active Hour Balance',   v:totH.toFixed(1)+' hrs', s:'active hour-based contracts'},
-    {l:'Active Dollar Balance', v:fD(totD),      s:'XO Reserve + active WU'},
-    {l:'Active Contracts',      v:act.length,    s:'as of March 3, 2026'},
+  const act=CONTRACTS.filter(c=>isAct(c));
+  const totH=act.filter(c=>c.rH>0).reduce((s,c)=>s+c.rH,0);
+  const totD=act.filter(c=>c.rD>0).reduce((s,c)=>s+c.rD,0);
+  const items=[
+    {l:'Total Trips Logged',   v:'292',              s:'all contracts, all time'},
+    {l:'NetJets Hours Flown',  v:'317.8 hrs',        s:'NJ 650 + NJ Share combined'},
+    {l:'Active Hour Balance',  v:totH.toFixed(1)+' hrs', s:'active hour-based contracts'},
+    {l:'Active Dollar Balance',v:fD(totD),           s:'XO Reserve + active WU'},
+    {l:'Active Contracts',     v:act.length,         s:'as of March 3, 2026'},
   ];
-  document.getElementById('sr').innerHTML = items.map(x =>
+  document.getElementById('sr').innerHTML=items.map(x=>
     `<div class="sc"><div class="sl">${x.l}</div><div class="sv">${x.v}</div><div class="ss">${x.s}</div></div>`
   ).join('');
 }
 
 // ── CONTRACT CARDS ────────────────────────────────────────────────────────────
 function renderCards() {
-  const rel = CONTRACTS.filter(c=>isAct(c)||wasRecent(c));
-  document.getElementById('cg').innerHTML = rel.map(c => {
+  const rel=CONTRACTS.filter(c=>isAct(c)||wasRecent(c));
+  document.getElementById('cg').innerHTML=rel.map(c=>{
     const act=isAct(c), isDol=c.sD>0||c.uD>0, isHr=c.sH>0;
     const neg=c.rH<0||c.rD<0;
     const low=isHr?(c.rH>=0&&c.rH<5):(c.rD>=0&&c.rD<20000);
@@ -300,25 +340,23 @@ function renderCards() {
     const cardCls=act&&neg?'cw':act&&isDol?'cd':act?'ca':'';
     const badgeHtml=!act?'<span class="bg bx">Expired</span>':neg?'<span class="bg bd">Deficit</span>':low?'<span class="bg bw">Low</span>':'<span class="bg ba">Active</span>';
     const yr1=c.eff.length>4?c.eff.substring(0,4):c.eff;
-    const yr2=c.exp&&c.exp.length>4?'&ndash;'+c.exp.substring(2,4):'';
-    const period=yr1+yr2;
-
+    const yr2=c.exp&&c.exp.length>4?'\u2013'+c.exp.substring(2,4):'';
     let rows='';
     if(isHr){
-      const remCls=c.rH<0?'hn':c.rH>0?'hp':'hv';
+      const rc=c.rH<0?'hn':c.rH>0?'hp':'hv';
       rows=`<div class="hr"><span class="hl">Starting Balance</span><span class="hv">${c.sH} hrs</span></div>
             <div class="hr"><span class="hl">Hours Used</span><span class="hv">${c.uH} hrs</span></div>
-            <div class="hr"><span class="hl">Remaining</span><span class="${remCls}">${c.rH>0?'+':''}${c.rH} hrs</span></div>`;
-    } else if(isDol) {
-      const remCls=c.rD<0?'hn':c.rD>0?'hp':'hv';
+            <div class="hr"><span class="hl">Remaining</span><span class="${rc}">${c.rH>0?'+':''}${c.rH} hrs</span></div>`;
+    } else if(isDol){
+      const rc=c.rD<0?'hn':c.rD>0?'hp':'hv';
       rows=`<div class="hr"><span class="hl">Starting Balance</span><span class="hv">${fD(c.sD)}</span></div>
             <div class="hr"><span class="hl">Amount Spent</span><span class="hv">${fD(c.uD)}</span></div>
-            <div class="hr"><span class="hl">Remaining</span><span class="${remCls}">${c.rD>=0?'+':'-'}${fD(c.rD)}</span></div>`;
+            <div class="hr"><span class="hl">Remaining</span><span class="${rc}">${c.rD>=0?'+':'-'}${fD(c.rD)}</span></div>`;
     } else {
-      rows=`<div class="hr"><span class="hl">Remarks</span><span class="hv" style="font-style:italic;font-size:10px;">${c.notes||'&mdash;'}</span></div>`;
+      rows=`<div class="hr"><span class="hl">Notes</span><span class="hv" style="font-size:10px;font-style:italic;">${c.notes||'&mdash;'}</span></div>`;
     }
     return `<div class="cc ${cardCls}">
-      <div class="ch"><div><div class="ct">${c.name}</div><div class="cs">${period}${c.exp&&c.exp.length>4?' &middot; Exp '+c.exp:''}</div></div>${badgeHtml}</div>
+      <div class="ch"><div><div class="ct">${c.name}</div><div class="cs">${yr1}${yr2}${c.exp&&c.exp.length>4?' &middot; Exp '+c.exp:''}</div></div>${badgeHtml}</div>
       ${rows}
       ${start>0?`<div class="pb"><div class="pf ${bc}" style="width:${up.toFixed(1)}%"></div></div><div class="pp">${up.toFixed(0)}% utilized</div>`:''}
       ${c.notes&&isHr?`<div class="cn">${c.notes}</div>`:''}
@@ -328,40 +366,39 @@ function renderCards() {
 
 // ── CHARTS ────────────────────────────────────────────────────────────────────
 const PAL=['#4fa3d1','#c9a84c','#2ecc71','#e74c3c','#9b59b6','#1abc9c','#f39c12','#e67e22','#3498db','#27ae60','#8e44ad','#2980b9'];
-function mkChart(id, type, labels, data, fmtFn, cutout) {
-  const opts = {
-    responsive:true, maintainAspectRatio:false,
-    plugins:{
-      legend:{position:'bottom',labels:{color:'#8899aa',font:{family:'DM Mono',size:10},padding:10,usePointStyle:true,boxWidth:8}},
-      tooltip:{callbacks:{label:ctx=>fmtFn(ctx)}}
-    }
-  };
-  if(cutout) opts.cutout=cutout;
+function mkChart(id,type,labels,data,fmtFn,cutout){
+  const opts={responsive:true,maintainAspectRatio:false,plugins:{
+    legend:{position:'bottom',labels:{color:'#8899aa',font:{family:'DM Mono',size:10},padding:10,usePointStyle:true,boxWidth:8}},
+    tooltip:{callbacks:{label:ctx=>fmtFn(ctx)}}
+  }};
+  if(cutout)opts.cutout=cutout;
   new Chart(document.getElementById(id).getContext('2d'),{
-    type, data:{labels,datasets:[{data,backgroundColor:PAL.slice(0,data.length),borderColor:'#112240',borderWidth:2,hoverOffset:6}]}, options:opts
+    type,data:{labels,datasets:[{data,backgroundColor:PAL.slice(0,data.length),borderColor:'#112240',borderWidth:2,hoverOffset:6}]},options:opts
   });
 }
-function renderCharts() {
-  const actH = CONTRACTS.filter(c=>isAct(c)&&c.rH>0);
+function renderCharts(){
+  // 1. Remaining hours — active hour contracts with positive balance
+  const actH=CONTRACTS.filter(c=>isAct(c)&&c.rH>0);
   mkChart('c1','doughnut',
     actH.map(c=>c.name+' ('+c.eff.substring(0,4)+')'),
     actH.map(c=>c.rH),
-    ctx=>' '+ctx.parsed.toFixed(1)+' hrs remaining',
-    '62%'
-  );
+    ctx=>' '+ctx.parsed.toFixed(1)+' hrs remaining','62%');
+  // 2. Spending by contract
   const spK=Object.keys(SPEND);
   mkChart('c2','pie',spK,spK.map(k=>SPEND[k]),ctx=>' $'+ctx.parsed.toLocaleString(undefined,{maximumFractionDigits:0}));
+  // 3. Trips by region
   const dK=Object.keys(DEST);
   mkChart('c3','doughnut',dK,dK.map(k=>DEST[k]),ctx=>' '+ctx.parsed+' trips','56%');
+  // 4. Aircraft type
   const aK=Object.keys(ACT);
   const tot=Object.values(ACT).reduce((a,b)=>a+b,0);
   mkChart('c4','pie',aK,aK.map(k=>ACT[k]),ctx=>' '+ctx.parsed+' ('+((ctx.parsed/tot)*100).toFixed(0)+'%)');
 }
 
 // ── AUTOCOMPLETE ──────────────────────────────────────────────────────────────
-let oS=null, dS=null;
-function setupAC(inId,acId,cb) {
-  const inp=document.getElementById(inId), ac=document.getElementById(acId);
+let oS=null,dS=null;
+function setupAC(inId,acId,cb){
+  const inp=document.getElementById(inId),ac=document.getElementById(acId);
   inp.addEventListener('input',()=>{
     const r=srch(inp.value);
     if(!r.length||!inp.value){ac.classList.remove('show');return;}
@@ -370,66 +407,109 @@ function setupAC(inId,acId,cb) {
     ac.classList.add('show');
   });
   ac.addEventListener('click',e=>{
-    const it=e.target.closest('.aci'); if(!it) return;
+    const it=e.target.closest('.aci');if(!it)return;
     const ap={f:it.dataset.f,i:it.dataset.i,n:it.dataset.n,c:it.dataset.c,la:parseFloat(it.dataset.la),lo:parseFloat(it.dataset.lo)};
     inp.value=(ap.i||ap.f)+' \u2014 '+ap.n;
-    ac.classList.remove('show'); cb(ap);
+    ac.classList.remove('show');cb(ap);
   });
   document.addEventListener('click',e=>{if(!inp.contains(e.target)&&!ac.contains(e.target))ac.classList.remove('show');});
 }
 setupAC('oi','oa',a=>{oS=a;});
 setupAC('di','da',a=>{dS=a;});
 
-// ── CONTRACT ADVISOR ──────────────────────────────────────────────────────────
-function findBest() {
+// ── FLIGHT ADVISOR ────────────────────────────────────────────────────────────
+function findBest(){
   if(!oS){const r=srch(document.getElementById('oi').value);if(r.length)oS=r[0];}
   if(!dS){const r=srch(document.getElementById('di').value);if(r.length)dS=r[0];}
   const area=document.getElementById('ra');
   area.style.display='block';
-  if(!oS||!dS){area.innerHTML='<div class="nr">&#9888; Could not identify airports. Try codes: PBI, HPN, RBW, MTJ, TEB, CHS, MIA</div>';return;}
-  const nm=hav(oS.la,oS.lo,dS.la,dS.lo), hrs=eH(nm);
-  const active = CONTRACTS.filter(c=>isAct(c));
-  const cands = active.map(c=>{
-    const isDol = c.name==='Wheels Up'||c.name==='XO Jet Reserve'||c.name==='XO Jet Ride Share'||c.name==='Charter';
-    const bal = isDol ? c.rD : c.rH;
-    const canCov = isDol ? c.rD > 0 : c.rH >= hrs;
-    const remAft = isDol ? null : (c.rH - hrs);
-    let score=50;
-    if(bal<=0) score-=65;
-    if(!isDol&&!canCov) score-=25;
-    score += isDol ? bal/8000 : bal*3;
-    return {c,isDol,bal,canCov,remAft,hrs,nm,score};
-  }).sort((a,b)=>b.score-a.score);
+  if(!oS||!dS){area.innerHTML='<div class="no-res">&#9888; Could not identify airports. Try: PBI, HPN, RBW, MTJ, TEB, CHS, MIA</div>';return;}
 
-  let html=`<div class="rh">
-    <span class="rl">${oS.i||oS.f} &#9992; ${dS.i||dS.f}</span>
-    <span style="font-size:12px;color:var(--cr)">${oS.c.split(',')[0]} &rarr; ${dS.c.split(',')[0]}</span>
-    <span class="dl">${Math.round(nm)} NM &nbsp;&middot;&nbsp; ~${hrs} hr est. flight time</span>
-  </div><div class="rg">`;
+  const nm=hav(oS.la,oS.lo,dS.la,dS.lo);
 
-  cands.forEach((s,i)=>{
-    const tier=i===0?'best':i<3?'good':'poor';
-    const rnk=i===0?'&#9733; TOP PICK':'#'+(i+1);
-    const bC=s.bal>0?'ok':'no';
-    const rC=s.remAft===null?'':s.remAft>5?'ok':s.remAft>0?'wn':'no';
-    const covTxt=s.isDol?'Pay per trip':(s.canCov?'Yes &#10003;':'Short '+fH(Math.abs(s.remAft)));
-    const covCls=s.isDol?'':s.canCov?'ok':'wn';
-    const balTxt=s.isDol?fD(s.c.rD):fH(s.c.rH);
-    const aftTxt=s.isDol?'Pay-per-use':s.remAft!==null?fH(s.remAft):'&mdash;';
-    const yr1=s.c.eff.length>4?s.c.eff.substring(0,4):s.c.eff;
-    const yr2=s.c.exp&&s.c.exp.length>4?'\u2013'+s.c.exp.substring(2,4):'+';
-    html+=`<div class="rc ${tier}">
-      ${i===0?'<div class="bc">&#10003; Best Choice</div>':''}
-      <div class="rr">${rnk}</div>
-      <div class="rn">${s.c.name}<br><span style="font-size:10px;color:var(--mu);font-family:DM Sans">${yr1}${yr2} &middot; ${s.isDol?'Dollar-based':'Hour-based'}</span></div>
-      <div class="rs"><span class="rsl">Est. Flight Time</span><span class="rsv rh2">${fH(s.hrs)}</span></div>
-      <div class="rs"><span class="rsl">Current Balance</span><span class="rsv ${bC}">${balTxt}</span></div>
-      <div class="rs"><span class="rsl">Balance After Trip</span><span class="rsv ${rC}">${aftTxt}</span></div>
-      <div class="rs"><span class="rsl">Covers Full Trip?</span><span class="rsv ${covCls}">${covTxt}</span></div>
-      <div class="rs"><span class="rsl">Expires</span><span class="rsv">${s.c.exp||'Ongoing'}</span></div>
-    </div>`;
+  // Only show active NETJETS contracts for aircraft comparison (hour-based)
+  const njContracts=CONTRACTS.filter(c=>isAct(c)&&(c.name==='NetJets 650'||c.name==='NetJets Share'));
+  // Dollar-based active contracts
+  const dolContracts=CONTRACTS.filter(c=>{
+    if(!isAct(c)) return false;
+    return c.name==='Wheels Up'||c.name==='XO Jet Reserve'||c.name==='XO Jet Ride Share'||c.name==='Charter';
   });
-  html+='</div>';
+
+  let html=`<div class="rhdr">
+    <span class="rlbl">${oS.i||oS.f} &#9992; ${dS.i||dS.f}</span>
+    <span style="font-size:12px;color:var(--cr)">${oS.c.split(',')[0]} &rarr; ${dS.c.split(',')[0]}</span>
+    <span class="dlbl">${Math.round(nm)} NM straight-line distance</span>
+  </div>`;
+
+  // ── NETJETS CONTRACTS: aircraft comparison ──────────────────────────────────
+  njContracts.forEach(c=>{
+    const balOk=c.rH>0;
+    const balCls=c.rH>5?'ok':c.rH>0?'warn':'no';
+    const yr1=c.eff.substring(0,4), yr2=c.exp.substring(2,4);
+
+    // compute per-aircraft metrics
+    const acData=AIRCRAFT.map(ac=>{
+      const rate=ac.rates[c.name]||1.0;
+      const tripHrs=flightTime(nm,ac.speed);         // actual flight time on this plane
+      const contractHrs=Math.round(tripHrs*rate*100)/100; // contract hours billed
+      const remAfter=Math.round((c.rH-contractHrs)*100)/100;
+      const canCover=c.rH>=contractHrs;
+      return {ac,rate,tripHrs,contractHrs,remAfter,canCover};
+    });
+
+    // best deal = lowest contractHrs among those that can cover the trip
+    const covering=acData.filter(d=>d.canCover&&balOk);
+    let bestIdx=-1;
+    if(covering.length>0){
+      const minHrs=Math.min(...covering.map(d=>d.contractHrs));
+      bestIdx=acData.findIndex(d=>d.contractHrs===minHrs&&d.canCover&&balOk);
+    }
+
+    html+=`<div class="csec">
+      <div class="csec-title">
+        ${c.name} <span style="font-size:12px;color:var(--mu);font-family:DM Sans">${yr1}&ndash;${yr2}</span>
+        <span class="csec-bal ${balCls}">Balance: ${c.rH>0?'+':''}${c.rH} hrs</span>
+      </div>
+      <div class="ac-grid">`;
+
+    acData.forEach((d,i)=>{
+      const isBest=i===bestIdx;
+      const insuf=!d.canCover||!balOk;
+      const remCls=d.remAfter>5?'g':d.remAfter>0?'w':'r';
+      html+=`<div class="acard${isBest?' best':''}${insuf?' insuf':''}">
+        ${isBest?'<div class="best-tag">Best Deal</div>':''}
+        <div class="acard-name">${d.ac.name}</div>
+        <div class="arow"><span class="albl">Cruise Speed</span><span class="aval">${d.ac.speed} ktas</span></div>
+        <div class="arow"><span class="albl">Actual Flight Time</span><span class="aval gold">${fH(d.tripHrs)}</span></div>
+        <div class="arow"><span class="albl">Interchange Rate</span><span class="aval">${d.rate}x</span></div>
+        <div class="arow"><span class="albl">Contract Hrs Billed</span><span class="aval ${insuf?'r':'g'}">${fHd(d.contractHrs)}</span></div>
+        <div class="arow"><span class="albl">Balance After Trip</span><span class="aval ${insuf?'r':remCls}">${insuf?'Insufficient':fH(d.remAfter)}</span></div>
+      </div>`;
+    });
+
+    if(!balOk){
+      html+=`<div class="unavail">&#9888;&nbsp; Insufficient balance on this contract (${c.rH} hrs). Aircraft options shown for reference only.</div>`;
+    }
+    html+='</div></div>';
+  });
+
+  // ── DOLLAR CONTRACTS ────────────────────────────────────────────────────────
+  if(dolContracts.length>0){
+    html+=`<div class="csec">
+      <div class="csec-title">Dollar-Based Contracts <span style="font-size:12px;color:var(--mu);font-family:DM Sans">pay per trip &mdash; no interchange rates</span></div>
+      <div class="ac-grid">`;
+    dolContracts.forEach(c=>{
+      const balCls=c.rD>20000?'ok':c.rD>0?'warn':'no';
+      html+=`<div class="acard${c.rD>0?'':' insuf'}">
+        <div class="acard-name">${c.name}</div>
+        <div class="arow"><span class="albl">Current Balance</span><span class="aval ${balCls}">${fD(c.rD)}</span></div>
+        <div class="arow"><span class="albl">Billing</span><span class="aval">Pay per trip</span></div>
+        <div class="arow"><span class="albl">Expires</span><span class="aval">${c.exp||'Ongoing'}</span></div>
+      </div>`;
+    });
+    html+='</div></div>';
+  }
+
   area.innerHTML=html;
 }
 
