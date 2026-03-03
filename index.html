@@ -348,7 +348,11 @@ function renderStats(CONTRACTS, xoRideYTD) {
 
 function renderCards(CONTRACTS) {
   const HIDDEN = ['NetJets Lease 2/1','Tudor','Charter','XO Jet','XO Jet Ride Share','JetEdge'];
-  const rel=CONTRACTS.filter(c=>!HIDDEN.includes(c.name)&&(isAct(c)||wasRecent(c)));
+  const rel=CONTRACTS.filter(c=>!HIDDEN.includes(c.name)&&(isAct(c)||wasRecent(c)))
+    .sort((a,b)=>{
+      const aA=isAct(a)?0:1, bA=isAct(b)?0:1;
+      return aA-bA;
+    });
   document.getElementById('cg').innerHTML=rel.map(c=>{
     const act=isAct(c),isDol=c.sD>0||c.uD>0,isHr=c.sH>0;
     const neg=c.rH<0||c.rD<0;
