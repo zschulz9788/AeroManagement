@@ -535,16 +535,35 @@ async function loadData() {
     // Parse travel calendar — tally XO Jet Ride Share cost YTD
     const travelRows = parseCSV(travelCSV);
     const curYear = new Date().getFullYear().toString();
+    // Debug: log first XO row and all headers to console
+    const firstRow = travelRows[0];
+    console.log('Travel CSV headers:', Object.keys(firstRow));
+    const xoRows = travelRows.filter(r => (r['Contract']||'').trim() === 'XO Jet Ride Share');
+    console.log('XO Ride Share rows found:', xoRows.length);
+    if(xoRows.length > 0) console.log('Sample XO row:', xoRows[0]);
+
+    // Find the cost column dynamically — match any header containing 'cost' and '$'
+    const travelHeaders = Object.keys(travelRows[0]||{});
+    const costCol = travelHeaders.find(h => h.toLowerCase().includes('cost') && h.includes('$'))
+                 || travelHeaders.find(h => h.toLowerCase().includes('cost'))
+                 || 'Cost ($)';
+    const dateCol = travelHeaders.find(h => h.toLowerCase() === 'date') || 'Date';
+    console.log('Using cost column:', costCol, '| date column:', dateCol);
+
     const xoRideYTD = travelRows
       .filter(r => {
         const contract = (r['Contract']||'').trim();
-        const date = (r['Date']||'').trim();
-        return contract === 'XO Jet Ride Share' && date.startsWith(curYear);
+        const date = (r[dateCol]||'').trim();
+        // Match year flexibly — date may be "2026-01-05", "1/5/2026", "Jan 5 2026" etc
+        const isThisYear = date.includes(curYear);
+        return contract === 'XO Jet Ride Share' && isThisYear;
       })
       .reduce((sum, r) => {
-        const cost = parseFloat((r['Cost ($)']||r['Cost']||'0').replace(/[$,]/g,'')) || 0;
+        const raw = (r[costCol]||'0').replace(/[$,]/g,'').trim();
+        const cost = parseFloat(raw) || 0;
         return sum + cost;
       }, 0);
+    console.log('XO Ride Share YTD total:', xoRideYTD);
 
     renderStats(LIVE_CONTRACTS, xoRideYTD);
     renderCards(LIVE_CONTRACTS);
