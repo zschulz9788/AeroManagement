@@ -95,7 +95,11 @@ header{border-bottom:1px solid rgba(201,168,76,.2);padding:18px 0;margin-bottom:
 .csec-bal.no{color:var(--re);}
 .csec-bal.warn{color:var(--am);}
 /* aircraft cards */
-.ac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;}
+.ac-grid{display:flex;flex-direction:row;gap:12px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--l) transparent;}
+.ac-grid::-webkit-scrollbar{height:4px;}
+.ac-grid::-webkit-scrollbar-track{background:transparent;}
+.ac-grid::-webkit-scrollbar-thumb{background:var(--l);border-radius:3px;}
+.acard{flex:0 0 210px;min-width:210px;}
 .acard{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:15px;position:relative;transition:border-color .2s;}
 .acard:hover{border-color:rgba(201,168,76,.25);}
 .acard.best{background:linear-gradient(135deg,rgba(46,204,113,.1),rgba(79,163,209,.06));border-color:rgba(46,204,113,.4);}
@@ -182,28 +186,33 @@ const CONTRACTS = [
 const AIRCRAFT = [
   {
     name: 'Challenger 650',
-    speed: 470,   // Bombardier Challenger 650 ~470 ktas
-    rates: { 'NetJets 650': 1.00 }   // NJ 650 only
+    speed: 470,
+    rates: { 'NetJets 650': 1.00 }
+  },
+  {
+    name: 'Challenger 350',
+    speed: 450,
+    rates: { 'NetJets 650': 0.90 }
   },
   {
     name: 'Latitude',
-    speed: 440,   // Cessna Citation Latitude ~440 ktas
+    speed: 440,
     rates: { 'NetJets 650': 0.84, 'NetJets Share': 1.00 }
   },
   {
-    name: 'Phenom 300',
-    speed: 390,   // Embraer Phenom 300 ~390 ktas
-    rates: { 'NetJets 650': 0.57, 'NetJets Share': 0.80 }
+    name: 'Sovereign',
+    speed: 420,
+    rates: { 'NetJets 650': 0.82, 'NetJets Share': 1.00 }
   },
   {
     name: 'Citation Excel',
-    speed: 395,   // Citation XLS ~395 ktas
+    speed: 395,
     rates: { 'NetJets 650': 0.69, 'NetJets Share': 0.94 }
   },
   {
-    name: 'Sovereign',
-    speed: 420,   // Citation Sovereign ~420 ktas
-    rates: { 'NetJets 650': 0.82, 'NetJets Share': 1.00 }
+    name: 'Phenom 300',
+    speed: 390,
+    rates: { 'NetJets 650': 0.57, 'NetJets Share': 0.80 }
   },
 ];
 
