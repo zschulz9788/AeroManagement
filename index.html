@@ -340,7 +340,8 @@ function renderStats(CONTRACTS) {
 }
 
 function renderCards(CONTRACTS) {
-  const rel=CONTRACTS.filter(c=>isAct(c)||wasRecent(c));
+  const HIDDEN = ['NetJets Lease 2/1','Tudor','Charter','XO Jet','XO Jet Ride Share','JetEdge'];
+  const rel=CONTRACTS.filter(c=>!HIDDEN.includes(c.name)&&(isAct(c)||wasRecent(c)));
   document.getElementById('cg').innerHTML=rel.map(c=>{
     const act=isAct(c),isDol=c.sD>0||c.uD>0,isHr=c.sH>0;
     const neg=c.rH<0||c.rD<0;
@@ -437,7 +438,7 @@ function findBest(){
   const njContracts=LIVE_CONTRACTS.filter(c=>isAct(c)&&(c.name==='NetJets 650'||c.name==='NetJets Share'));
   const dolContracts=LIVE_CONTRACTS.filter(c=>{
     if(!isAct(c)) return false;
-    return c.name==='Wheels Up'||c.name==='XO Jet Reserve'||c.name==='XO Jet Ride Share'||c.name==='Charter';
+    return c.name==='Wheels Up'||c.name==='XO Jet Reserve';
   });
   let html=`<div class="rhdr">
     <span class="rlbl">${oS.i||oS.f} &#9992; ${dS.i||dS.f}</span>
