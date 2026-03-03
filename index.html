@@ -321,18 +321,25 @@ function srch(q) {
 }
 
 // ── RENDER FUNCTIONS ──────────────────────────────────────────────────────────
-function renderStats(CONTRACTS) {
+function renderStats(CONTRACTS, xoRideYTD) {
   const act=CONTRACTS.filter(c=>isAct(c));
   const totH=act.filter(c=>c.rH>0).reduce((s,c)=>s+c.rH,0);
-  const totD=act.filter(c=>c.rD>0).reduce((s,c)=>s+c.rD,0);
   const njH=CONTRACTS.filter(c=>c.name==='NetJets 650'||c.name==='NetJets Share').reduce((s,c)=>s+c.uH,0);
-  const totTrips=CONTRACTS.reduce((s,c)=>s+(c.uH>0||c.uD>0?1:0),0);
+
+  // Find active WU and XO Reserve balances individually
+  const wuAct=CONTRACTS.filter(c=>isAct(c)&&c.name==='Wheels Up');
+  const wuBal=wuAct.reduce((s,c)=>s+c.rD,0);
+  const xoRes=CONTRACTS.filter(c=>isAct(c)&&c.name==='XO Jet Reserve');
+  const xoBal=xoRes.reduce((s,c)=>s+c.rD,0);
+
+  const yr=new Date().getFullYear();
   const items=[
-    {l:'Active Contracts',      v:act.length,              s:'as of today'},
-    {l:'NetJets Hours Flown',   v:njH.toFixed(1)+' hrs',   s:'NJ 650 + NJ Share combined'},
-    {l:'Active Hour Balance',   v:totH.toFixed(1)+' hrs',  s:'active hour-based contracts'},
-    {l:'Active Dollar Balance', v:fD(totD),                s:'XO Reserve + active WU'},
-    {l:'Data Last Refreshed',   v:new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}), s:'live from Google Sheets'},
+    {l:'NetJets Hours Flown',         v:njH.toFixed(1)+' hrs',   s:'NJ 650 + NJ Share combined'},
+    {l:'Active Hour Balance',         v:totH.toFixed(1)+' hrs',  s:'active hour-based contracts'},
+    {l:'Wheels Up Balance',           v:fD(wuBal),               s:wuBal>=0?'current contract balance':'deficit — over limit'},
+    {l:'XO Jet Reserve Balance',      v:fD(xoBal),               s:xoBal>=0?'current contract balance':'deficit — over limit'},
+    {l:'XO Ride Share '+yr+' Spend',  v:fD(xoRideYTD||0),        s:'year-to-date from travel calendar'},
+    {l:'Data Last Refreshed',         v:new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}), s:'live from Google Sheets'},
   ];
   document.getElementById('sr').innerHTML=items.map(x=>
     `<div class="sc"><div class="sl">${x.l}</div><div class="sv">${x.v}</div><div class="ss">${x.s}</div></div>`
@@ -525,19 +532,23 @@ async function loadData() {
     const contractRows = parseCSV(contractsCSV);
     LIVE_CONTRACTS = parseContracts(contractRows);
 
-    // Trip count from travel calendar
+    // Parse travel calendar — tally XO Jet Ride Share cost YTD
     const travelRows = parseCSV(travelCSV);
-    const tripCount = travelRows.filter(r => r['Date'] && r['Date'].trim()).length;
+    const curYear = new Date().getFullYear().toString();
+    const xoRideYTD = travelRows
+      .filter(r => {
+        const contract = (r['Contract']||'').trim();
+        const date = (r['Date']||'').trim();
+        return contract === 'XO Jet Ride Share' && date.startsWith(curYear);
+      })
+      .reduce((sum, r) => {
+        const cost = parseFloat((r['Cost ($)']||r['Cost']||'0').replace(/[$,]/g,'')) || 0;
+        return sum + cost;
+      }, 0);
 
-    renderStats(LIVE_CONTRACTS);
+    renderStats(LIVE_CONTRACTS, xoRideYTD);
     renderCards(LIVE_CONTRACTS);
     renderCharts(LIVE_CONTRACTS);
-
-    // Update trip count stat dynamically
-    const srEl = document.getElementById('sr');
-    const statDivs = srEl.querySelectorAll('.sc');
-    // Trip count is not in stats anymore — patch the last-refreshed card
-    // Already rendered in renderStats above
 
   } catch(err) {
     console.error(err);
