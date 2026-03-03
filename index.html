@@ -181,6 +181,11 @@ const CONTRACTS = [
 // Speeds: real-world typical cruise (ktas)
 const AIRCRAFT = [
   {
+    name: 'Challenger 650',
+    speed: 470,   // Bombardier Challenger 650 ~470 ktas
+    rates: { 'NetJets 650': 1.00 }   // NJ 650 only
+  },
+  {
     name: 'Latitude',
     speed: 440,   // Cessna Citation Latitude ~440 ktas
     rates: { 'NetJets 650': 0.84, 'NetJets Share': 1.00 }
@@ -447,8 +452,8 @@ function findBest(){
     const balCls=c.rH>5?'ok':c.rH>0?'warn':'no';
     const yr1=c.eff.substring(0,4), yr2=c.exp.substring(2,4);
 
-    // compute per-aircraft metrics
-    const acData=AIRCRAFT.map(ac=>{
+    // compute per-aircraft metrics — only aircraft with a rate for this contract
+    const acData=AIRCRAFT.filter(ac=>ac.rates[c.name]!==undefined).map(ac=>{
       const rate=ac.rates[c.name]||1.0;
       const tripHrs=flightTime(nm,ac.speed);         // actual flight time on this plane
       const contractHrs=Math.round(tripHrs*rate*100)/100; // contract hours billed
