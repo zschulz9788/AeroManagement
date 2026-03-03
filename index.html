@@ -455,11 +455,12 @@ function findBest(){
     // compute per-aircraft metrics — only aircraft with a rate for this contract
     const acData=AIRCRAFT.filter(ac=>ac.rates[c.name]!==undefined).map(ac=>{
       const rate=ac.rates[c.name]||1.0;
-      const tripHrs=flightTime(nm,ac.speed);         // actual flight time on this plane
-      const contractHrs=Math.round(tripHrs*rate*100)/100; // contract hours billed
+      const tripHrs=flightTime(nm,ac.speed);                       // actual flight time (air only)
+      const tripTimeBilled=Math.round((tripHrs+0.2)*100)/100;      // trip time = flight + 0.2 taxi
+      const contractHrs=Math.round(tripTimeBilled*rate*100)/100;   // contract hrs = trip time × rate
       const remAfter=Math.round((c.rH-contractHrs)*100)/100;
       const canCover=c.rH>=contractHrs;
-      return {ac,rate,tripHrs,contractHrs,remAfter,canCover};
+      return {ac,rate,tripHrs,tripTimeBilled,contractHrs,remAfter,canCover};
     });
 
     // best deal = lowest contractHrs among those that can cover the trip
@@ -486,6 +487,7 @@ function findBest(){
         <div class="acard-name">${d.ac.name}</div>
         <div class="arow"><span class="albl">Cruise Speed</span><span class="aval">${d.ac.speed} ktas</span></div>
         <div class="arow"><span class="albl">Actual Flight Time</span><span class="aval gold">${fH(d.tripHrs)}</span></div>
+        <div class="arow"><span class="albl">Trip Time (+ 0.2 taxi)</span><span class="aval gold">${fHd(d.tripTimeBilled)}</span></div>
         <div class="arow"><span class="albl">Interchange Rate</span><span class="aval">${d.rate}x</span></div>
         <div class="arow"><span class="albl">Contract Hrs Billed</span><span class="aval ${insuf?'r':'g'}">${fHd(d.contractHrs)}</span></div>
         <div class="arow"><span class="albl">Balance After Trip</span><span class="aval ${insuf?'r':remCls}">${insuf?'Insufficient':fH(d.remAfter)}</span></div>
