@@ -324,8 +324,8 @@ function srch(q) {
 // ── RENDER FUNCTIONS ──────────────────────────────────────────────────────────
 function renderStats(CONTRACTS, xoRideYTD) {
   const act=CONTRACTS.filter(c=>isAct(c));
-  const totH=act.filter(c=>c.rH>0).reduce((s,c)=>s+c.rH,0);
-  const njH=CONTRACTS.filter(c=>c.name==='NetJets 650'||c.name==='NetJets Share').reduce((s,c)=>s+c.uH,0);
+  const nj650=CONTRACTS.find(c=>isAct(c)&&c.name==='NetJets 650');
+  const njShare=CONTRACTS.find(c=>isAct(c)&&c.name==='NetJets Share');
 
   // Find active WU and XO Reserve balances individually
   const wuAct=CONTRACTS.filter(c=>isAct(c)&&c.name==='Wheels Up');
@@ -335,8 +335,8 @@ function renderStats(CONTRACTS, xoRideYTD) {
 
   const yr=new Date().getFullYear();
   const items=[
-    {l:'NetJets Hours Flown',         v:njH.toFixed(1)+' hrs',   s:'NJ 650 + NJ Share combined'},
-    {l:'Active Hour Balance',         v:totH.toFixed(1)+' hrs',  s:'active hour-based contracts'},
+    {l:'NetJets 650 Remaining',       v:nj650?(nj650.rH.toFixed(1)+' hrs'):'—',   s:'hours left in NJ 650 contract'},
+    {l:'NetJets Share Remaining',     v:njShare?(njShare.rH.toFixed(1)+' hrs'):'—', s:'hours left in NJ Share contract'},
     {l:'Wheels Up Balance',           v:fD(wuBal),               s:wuBal>=0?'current contract balance':'deficit — over limit'},
     {l:'XO Jet Reserve Balance',      v:fD(xoBal),               s:xoBal>=0?'current contract balance':'deficit — over limit'},
     {l:'XO Ride Share '+yr+' Spend',  v:fD(xoRideYTD||0),        s:'year-to-date from travel calendar'},
